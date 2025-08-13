@@ -32,6 +32,9 @@ It’s designed to be low-risk and additive to your current workflow.
 * Enter the device code shown in the shell
 * Complete sign-in
 
+![Sentinel WinEvt Gap Checker Screenshot](images/sentinel-winevt-gap-checker1.png)
+
+
 3. Upload the script or create it in Cloud Shell:
 
    ```powershell
