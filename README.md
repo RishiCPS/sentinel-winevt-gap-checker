@@ -32,12 +32,7 @@ It’s designed to be low-risk and additive to your current workflow.
 * Enter the device code shown in the shell
 * Complete sign-in
 
-3. Pick the subscription you want to scan:
-
-   ```powershell
-   Select-AzSubscription -SubscriptionId <subscriptionId>
-   ```
-4. Upload the script or create it in Cloud Shell:
+3. Upload the script or create it in Cloud Shell:
 
    ```powershell
    nano windows_events_checker_plus.ps1
@@ -110,5 +105,3 @@ Here’s the one-liner version of those commands so they’re copy-paste ready:
 * You need permissions to read Sentinel alert rules and run Log Analytics queries.
 * The **XPath** targets the Security log channel (DCR mapping applies).
 * Regex is intentionally conservative; sanity check EventIDs if you see false positives from complex lists.
-
-If you want, I can also generate a starter `.gitignore` and commit scaffolding (license, sample screenshots folder, etc.).
