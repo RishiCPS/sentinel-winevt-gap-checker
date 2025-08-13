@@ -45,58 +45,37 @@ It’s designed to be low-risk and additive to your current workflow.
 
    Paste the script content, press `CTRL+O`, `Enter`, then `CTRL+X`.
 
+Here’s the one-liner version of those commands so they’re copy-paste ready:
+
+---
+
 ## Quick start (autoCheck mode)
 
-Minimal (SecurityEvent only, default 7-day lookback):
+**Minimal** (SecurityEvent only, default 7-day lookback):
 
 ```powershell
-./windows_events_checker_plus.ps1 `
-  -useAutoCheck `
-  -subscriptionId <subscriptionId> `
-  -workspaceId <workspaceId> `
-  -resourceGroupName <resourceGroupName> `
-  -workspaceName <workspaceName>
+./windows_events_checker_plus.ps1 -useAutoCheck -subscriptionId <subscriptionId> -workspaceId <workspaceId> -resourceGroupName <resourceGroupName> -workspaceName <workspaceName>
 ```
 
-SecurityEvent **+** WindowsEvent (separate queries, same lookback as `-timespan`):
+**SecurityEvent + WindowsEvent** (separate queries, same lookback as `-timespan`):
 
 ```powershell
-./windows_events_checker_plus.ps1 `
-  -useAutoCheck `
-  -subscriptionId <subscriptionId> `
-  -workspaceId <workspaceId> `
-  -resourceGroupName <resourceGroupName> `
-  -workspaceName <workspaceName> `
-  -CheckWindowsEvent
+./windows_events_checker_plus.ps1 -useAutoCheck -subscriptionId <subscriptionId> -workspaceId <workspaceId> -resourceGroupName <resourceGroupName> -workspaceName <workspaceName> -CheckWindowsEvent
 ```
 
 **UNION** of SecurityEvent + WindowsEvent over 90 days:
 
 ```powershell
-./windows_events_checker_plus.ps1 `
-  -useAutoCheck `
-  -subscriptionId <subscriptionId> `
-  -workspaceId <workspaceId> `
-  -resourceGroupName <resourceGroupName> `
-  -workspaceName <workspaceName> `
-  -UseUnion `
-  -UnionTimespan 90
+./windows_events_checker_plus.ps1 -useAutoCheck -subscriptionId <subscriptionId> -workspaceId <workspaceId> -resourceGroupName <resourceGroupName> -workspaceName <workspaceName> -UseUnion -UnionTimespan 90
 ```
 
-Add billed volume table (MB) for **ingested-but-unused** EventIDs over the last 45 days:
+**Add billed volume table** (MB) for ingested-but-unused EventIDs over the last 30 days:
 
 ```powershell
-./windows_events_checker_plus.ps1 `
-  -useAutoCheck `
-  -subscriptionId <subscriptionId> `
-  -workspaceId <workspaceId> `
-  -resourceGroupName <resourceGroupName> `
-  -workspaceName <workspaceName> `
-  -UseUnion -UnionTimespan 90 `
-  -UnusedVolumeDays 45
+./windows_events_checker_plus.ps1 -useAutoCheck -subscriptionId <subscriptionId> -workspaceId <workspaceId> -resourceGroupName <resourceGroupName> -workspaceName <workspaceName> -UseUnion -UnionTimespan 90 -UnusedVolumeDays 30
 ```
 
-> Tip: All placeholders are **yours to fill** (`<tenantId>`, `<subscriptionId>`, `<workspaceId>`, `<resourceGroupName>`, `<workspaceName>`). Nothing is hardcoded.
+> Tip: All placeholders are **yours to fill** (`<tenantId>`, `<subscriptionId>`, `<workspaceId>`, `<resourceGroupName>`, `<workspaceName>`).
 
 ## Parameters (core)
 
@@ -133,4 +112,3 @@ Add billed volume table (MB) for **ingested-but-unused** EventIDs over the last 
 * Regex is intentionally conservative; sanity check EventIDs if you see false positives from complex lists.
 
 If you want, I can also generate a starter `.gitignore` and commit scaffolding (license, sample screenshots folder, etc.).
-```
